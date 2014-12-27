@@ -48,8 +48,8 @@ def show_bartsch():
     db.close()
     return render_template('entries.html', entries=entries)
 
-@app.route('/productos')
-def show_productos():
+@app.route('/cervezas')
+def show_cervezas():
     db = connect_db()
     cur = db.execute('SELECT title, description FROM entry ORDER BY id DESC')
     entries = cur.fetchall()
