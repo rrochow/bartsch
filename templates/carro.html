@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+
+
+<h2>Tipo de Cerveza</h2>
+
+<div class="row">
+	<div class="col-sm-6 col-md-2">
+    	<a href="#" class="thumbnail">
+      		<img src="{{url_for('static', filename='imagenes/cerveza01.png' )}}" alt="...">
+    	</a>
+  	</div>
+
+  	<div class="col-sm-6 col-md-2">
+    	<a href="#" class="thumbnail">
+      		<img src="{{url_for('static', filename='imagenes/cerveza01.png' )}}" alt="...">
+    	</a>
+  	</div>
+
+  	<div class="col-sm-6 col-md-2">
+    	<a href="#" class="thumbnail">
+      		<img src="{{url_for('static', filename='imagenes/cerveza01.png' )}}" alt="...">
+    	</a>
+  	</div>
+
+  	<div class="col-sm-6 col-md-2">
+    	<a href="#" class="thumbnail">
+      		<img src="{{url_for('static', filename='imagenes/cerveza01.png' )}}" alt="...">
+    	</a>
+  	</div>
+
+  	<div class="col-sm-6 col-md-2">
+    	<a href="#" class="thumbnail">
+      		<img src="{{url_for('static', filename='imagenes/cerveza01.png' )}}" alt="...">
+    	</a>
+  	</div>
+
+  	<div class="col-sm-6 col-md-2">
+    	<a href="#" class="thumbnail">
+      		<img src="{{url_for('static', filename='imagenes/cerveza01.png' )}}" alt="...">
+    	</a>
+  	</div>
+
+</div>
+
+
+
+	<div class="panel panel-default">
+		<div class="panel-heading"><h2>Productos</h2></div>
+	  	<TABLE class = 'table table-bordered table-striped table-hover'>
+	  		<TR>
+	  			<th></th>
+				<TH>nombre</TH>
+				<TH>descripcion</TH>
+				<TH>precio</TH>
+				<TH>cantidad</TH>
+				<TH>agregar al carro</TH>
+			</TR>
+				
+			{% for producto in productos %}
+			<TR>
+				<td><IMG SRC="{{url_for('static', filename= producto.img_url )}}" width="50" height="50"></IMG></td>
+				<TD>{{ producto.nombre }}</TD>
+				<TD>{{ producto.descripcion }}</TD>
+				<TD>{{ producto.precio_neto }}</TD>
+				<TD><input type="text" class="form-control" placeholder="Cantidad"></TD>
+				<TD>
+					<div class="col-xs-offset-3 col-xs-9" id='botones_formulario'>
+						<button type="submit" class="btn btn-success btn-lg">
+							<span class="glyphicon glyphicon-shopping-cart"></span>
+						</button>
+						<button type="submit" class="btn btn-warning btn-lg">
+							<span class="glyphicon glyphicon-remove"></span>
+						</button>
+					</div>
+				</TD>
+			</TR>
+			{% endfor %}	
+		</TABLE>
+	</div>
+</div>
+{% endblock content %}
+

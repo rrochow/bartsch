@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    {% for entry in entries %}
+    <div class="panel panel-default">
+	  	<div class="panel-heading"><h4>{{ entry.title }}</h4></div>
+	  	<div class="panel-body">
+	    	<p> {{ entry.description }}</p>
+	  	</div>
+	</div>
+    {% endfor %}
+</div>
+{% endblock content %}

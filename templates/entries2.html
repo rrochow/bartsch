@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="media">
+	{% for entry in entries %}
+	<a class="pull-left" href="#">  
+    	<img class="media-object" src="{{url_for('static', filename='imagenes/imagen01.jpg' )}}" width="64" height="64" >
+  	</a>
+  	<div class="media-body">
+    	<h4 class="media-heading">{{ entry.title }}</h4>
+    	<p>{{ entry.description }}</p>
+  	</div>
+{% endfor %}
+</div>
+{% endblock content %}
