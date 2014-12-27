@@ -1,0 +1,3 @@
+
+
+git remote add origin rodmast@github.com:/rrochow/bartsch

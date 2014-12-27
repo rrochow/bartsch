@@ -2,18 +2,32 @@
 
 {% block content %}
 
-<div>
-	{% for entry in entries %}
-<div class="media">
-	<a class="pull-left" href="#">  
-    	<img class="img-circle" src="{{url_for('static', filename='imagenes/cerveza01.jpg' )}}" width="200" height="200" >
-  	</a>
-  	<div class="media-body">
-    	<h2 class="media-heading">{{ entry.title }}</h2>
-    	<p>{{ entry.description }}</p>
-  	</div>
-
+<div class = "container">
+<h2>Cervezas Bartsch</h2>
+<div class="row">
+{% for entry in entries %}
+  <div class="col-sm-6 col-md-6">
+    <div class="thumbnail">
+      <img src="{{url_for('static', filename='imagenes/cerveza01.jpg' )}}" alt="...">
+      <div class="caption">
+        <h3>{{ entry.title }}</h3>
+        <p>
+        	{{ entry.description }}
+        </p>
+        <p>
+          <a href="#" class="btn btn-primary" role="button">Botón</a>
+          <a href="#" class="btn btn-default" role="button">Botón</a>
+        </p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
 </div>
-	{% endfor %}
-	</div>
+</div>
 {% endblock content %}
+
+
+
+
+
+
