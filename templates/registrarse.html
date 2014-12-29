@@ -6,30 +6,28 @@
 {% block content %}
 <div class="container">
 <h2>Registro de Cliente</h2>
-<div class="well">
+<div class="well col-sm-6">
     <form class="form-horizontal" role="form" name="input" 
-        action="{{ url_for('new_post') }}" method="post" enctype="multipart/form-data">
+        action="{{ url_for('new_registro') }}" method="post" enctype="multipart/form-data">
 
         <div class="form-group">
-            <label for="correo" class="col-sm-2 control-label">Correo</label>
-            <div class="col-sm-8">
+            <div class="col-sm-offset-1 col-sm-10">
                 <input class="form-control" type="email" name="title" placeholder="Ingresar Correo">
             </div>
         </div>
         <div class="form-group">
-            <label for="contraseña" class="col-sm-2 control-label">Contraseña:</label>
-            <div class="col-sm-8">
+            <div class="col-sm-offset-1 col-sm-10">
                 <input type="password" class="form-control" placeholder="Contraseña">
             </div>
         </div>
-        <div class="form-group">
-            <label for="contraseña2" class="col-sm-2 control-label">Confirmar Contraseña:</label>           
-            <div class="col-sm-8">
+        <div class="form-group">          
+            <div class="col-sm-offset-1 col-sm-10">
                 <input type="password" class="form-control" placeholder="Confirmar Contraseña">
             </div>
         </div>
+
         <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-8">
+            <div class="col-sm-offset-1 col-sm-4">
             <input type="submit" value="Registrarse" class="btn btn-default">
             </div>
         </div>

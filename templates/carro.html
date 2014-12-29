@@ -4,71 +4,78 @@
 
 <div class="container">
 
+	<h2>Tipo de Cerveza</h2>
 
-<h2>Tipo de Cerveza</h2>
+	<div class="row">
+		{% for cerveza in cervezas %}
+		<div class="col-sm-6 col-md-2">
+	    	<a href="#" class="thumbnail">
+	      		<img src="{{url_for('static', filename=cerveza.img_url )}}" alt="...">
+	    	</a>
+	  	</div>
+		{% endfor %}
+	</div>
 
-<div class="row">
-	<div class="col-sm-6 col-md-2">
-    	<a href="#" class="thumbnail">
-      		<img src="{{url_for('static', filename='imagenes/cerveza01.png' )}}" alt="...">
-    	</a>
-  	</div>
-
-  	<div class="col-sm-6 col-md-2">
-    	<a href="#" class="thumbnail">
-      		<img src="{{url_for('static', filename='imagenes/cerveza01.png' )}}" alt="...">
-    	</a>
-  	</div>
-
-  	<div class="col-sm-6 col-md-2">
-    	<a href="#" class="thumbnail">
-      		<img src="{{url_for('static', filename='imagenes/cerveza01.png' )}}" alt="...">
-    	</a>
-  	</div>
-
-  	<div class="col-sm-6 col-md-2">
-    	<a href="#" class="thumbnail">
-      		<img src="{{url_for('static', filename='imagenes/cerveza01.png' )}}" alt="...">
-    	</a>
-  	</div>
-
-  	<div class="col-sm-6 col-md-2">
-    	<a href="#" class="thumbnail">
-      		<img src="{{url_for('static', filename='imagenes/cerveza01.png' )}}" alt="...">
-    	</a>
-  	</div>
-
-  	<div class="col-sm-6 col-md-2">
-    	<a href="#" class="thumbnail">
-      		<img src="{{url_for('static', filename='imagenes/cerveza01.png' )}}" alt="...">
-    	</a>
-  	</div>
-
-</div>
-
-
-
+	
 	<div class="panel panel-default">
 		<div class="panel-heading"><h2>Productos</h2></div>
 	  	<TABLE class = 'table table-bordered table-striped table-hover'>
 	  		<TR>
 	  			<th></th>
+	  			<TH>id</TH>
 				<TH>nombre</TH>
 				<TH>descripcion</TH>
 				<TH>precio</TH>
+				<TH>stock</TH>
 				<TH>cantidad</TH>
-				<TH>agregar al carro</TH>
+				<TH>agregar</TH>
 			</TR>
 				
 			{% for producto in productos %}
+			<form action="{{ url_for('show_carro') }}" method="post">
 			<TR>
-				<td><IMG SRC="{{url_for('static', filename= producto.img_url )}}" width="50" height="50"></IMG></td>
+				<TD>
+					<IMG SRC="{{url_for('static', filename= producto.img_url )}}" width="50" height="50"></IMG>
+				</TD>
+				<TD>
+					<label name="label" class="control-label">
+						{{ producto.nombre }}
+					</label>
+				</TD>
 				<TD>{{ producto.nombre }}</TD>
 				<TD>{{ producto.descripcion }}</TD>
 				<TD>{{ producto.precio_neto }}</TD>
-				<TD><input type="text" class="form-control" placeholder="Cantidad"></TD>
+				<TD>{{ producto.stock }}</TD>
+				<TD nowrap>
+					<div>
+						<input name = "cantidad" type="text" class="form-control" placeholder="Cantidad" value = "{{ producto.id }}">
+					</div>
+				</TD>
 				<TD>
-					<div class="col-xs-offset-3 col-xs-9" id='botones_formulario'>
+					<div class="col-xs-offset-0 col-xs-12" id='botones_formulario'>
+						<button type="submit" name="boton_carro" 
+								class="btn btn-success btn-lg" value="{{ producto.id }}">
+							<span class="glyphicon glyphicon-shopping-cart"></span>
+						</button>
+						<button type="button" class="btn btn-warning btn-lg">
+							<span class="glyphicon glyphicon-remove"></span>
+						</button>
+					</div>
+				</TD>
+			</TR>
+			</form>
+			{% endfor %}
+
+			<TR>
+				<TD></TD>
+				<TD>Carro</TD>
+				<TD>Total de la Compra</TD>
+				<TD></TD>
+				<TD></TD>
+				<TD></TD>
+				<TD></TD>
+				<TD nowrap>
+					<div class="col-xs-offset-0 col-xs-12" id='botones_formulario'>
 						<button type="submit" class="btn btn-success btn-lg">
 							<span class="glyphicon glyphicon-shopping-cart"></span>
 						</button>
@@ -77,10 +84,10 @@
 						</button>
 					</div>
 				</TD>
-			</TR>
-			{% endfor %}	
+			</TR>	
 		</TABLE>
 	</div>
+
 </div>
 {% endblock content %}
 

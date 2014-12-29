@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+<h2>Quienes Somos?</h2>
+	<div class="container">
+		<h1>
+		    <IMG SRC="{{url_for('static', filename= 'imagenes/logo.svg' )}}" width="70" height="70">
+		   	</IMG> 
+		    Cerveza Bartsch
+		</h1>
+
+	  	<img src="{{url_for('static', filename='imagenes/portada01.jpg' )}}" width="1100" height="200">
+	    <p>
+	    	Somos una empresa joven que se especializa en la elaboración de la cerveza artesanal, que se preocupa por cumplir las expectativas del mercado y de agradar al paladar más exigente.
+
+	    	Comprometidos con la excelencia en la producción de cerveza artesanal, ya que contamos con el talento humano para su producción, buscando siempre la satisfacción de nuestros clientes a través de políticas de mejoramiento continuo, llevando de la mano nuestros procesos con el cuidado del medio ambiente y conciencia de la comunidad. 
+		</p>
+		<h3>Objetivos</h3>
+		<p>
+			Crear productos innovadores y de alta calidad que satisfagan a nuestros clientes, cumpliendo con los requisitos de calidad, frescura y sabor.
+			Llegar a ser una empresa altamente competitiva en el mercado de la cerveza artesanal.
+		</p>
+	</div>
+</div>
+{% endblock content %}

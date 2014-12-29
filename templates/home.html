@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Cerveza Bartsch</h2>
+
     <div id="myCarousel" class="carousel slide">
 	    <ol class="carousel-indicators">
 		    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -13,7 +13,11 @@
 		    <div class="active item">
 		    	<img src="{{url_for('static', filename='imagenes/portada01.jpg' )}}">
 		    	<div class="carousel-caption">
-		    		<h1>Cerveza Bartsch, Paillaco</h1>
+		    		<h1>
+		    			<IMG SRC="{{url_for('static', filename= 'imagenes/logo.svg' )}}" width="70" height="70">
+		    			</IMG> 
+		    			Cerveza Bartsch, Paillaco
+		    		</h1>
 					<h3>Region de los Rios</h3>
 				</div>
 		    </div>

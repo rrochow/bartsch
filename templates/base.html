@@ -2,7 +2,7 @@
 <html>
 <head>
 {% block head %}
-<title>{% block title %}Blog flask{% endblock title %}</title>
+<title>{% block title %}Cerveza Bartsch{% endblock title %}</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,40 +32,59 @@
 {% block menu %}
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
-    <div class="navbar-header">
+    <div class="navbar-header navbar-left">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>    
-      <a class="navbar-brand" href="{{url_for('show_home')}}">Home</a>
+      <a class="navbar-brand" href="{{url_for('show_home')}}">
+        <span class="glyphicon glyphicon-home"></span>
+      </a>
     </div>
 
     <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li><a href="{{url_for('show_bartsch')}}">Bartsch</a></li>
-        <li><a href="{{url_for('show_cervezas')}}">Cervezas</a></li>
-        <li><a href="{{url_for('new_compra')}}">Comprar</a></li>
-        <li><a href="{{url_for('new_post')}}">Cliente</a></li>
-        <li><a href="{{url_for('new_registro')}}">Registrarse</a></li>
-        <li><a href="#categories">Contacto</a></li>
+      <ul class="nav navbar-nav"> 
+        <li><a href="{{url_for('show_bartsch')}}">Quienes Somos</a></li>
+        <li><a href="{{url_for('show_cervezas')}}">Cervezas</a></li>       
+
+        {% if session.username %}
+          <li><a href="{{url_for('new_compra')}}">Comprar</a></li>
+        {% else %}
+          <li><a href="{{url_for('new_registro')}}">Registrarse</a></li>
+        {% endif %}
+          <li><a href="{{url_for('new_contacto')}}">Contacto</a></li>
       </ul>
 
+      
+
+      
       <ul class="nav navbar-nav navbar-right">
-      <form class="navbar-form navbar-left" >
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Correo">
-        </div>
-      </form>
-
-      <form class="navbar-form navbar-left" >
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Contraseña">
-        </div>
-        <button type="submit" class="btn btn-default">Login</button>
-      </form>  
+      {% if session.username %}
+        <li><a><span class="glyphicon glyphicon-user"></span></a></li>
+        <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ session.username }}
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="{{url_for('show_perfil')}}">Configuración de la cuenta</a></li>
+                <li><a href="{{url_for('logout')}}">Cerrar sesión</a></li>
+              </ul>
+        </li>
+      {% else %}
+        <form class="form-inline navbar-form navbar-right" action="{{ url_for('login') }}" method="post" >
+            <div class="form-group">
+              <input name="user" type="text" class="form-control input-sm" placeholder="Correo">
+            </div>
+            <div class="form-group">
+              <input name="password" type="password" class="form-control input-sm" placeholder="Contraseña">          
+            </div>
+            <button type="submit" class="btn btn-primary btn-sm" >iniciar sesión</button>
+        </form>
+      {% endif %}  
       </ul>
+      
 
     </div><!-- /.navbar-collapse -->
 
@@ -81,9 +100,9 @@
 
 {% endblock content %}
 
-
 <footer>
     <p>&copy; RodM@st 2014</p>
+
 </footer>
 
 </body>

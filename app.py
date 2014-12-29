@@ -6,9 +6,37 @@ from flask import (
     url_for,
     request,
     flash,
-    redirect)
+    redirect,
+    session
+)
 
 app = Flask(__name__)
+
+app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        user = request.form["user"]
+        password = request.form["password"]
+        db = connect_db2()
+        result = db.execute('SELECT correo, clave FROM cliente WHERE correo=? AND clave = ?',[user, password])
+        matches = result.fetchall()
+        db.close()
+        if len(matches) > 0: #The user and pass combination exits
+            user_data = matches[0]
+            session['username'] = user
+            return redirect(url_for('show_home'))
+        else:
+            return render_template('form.html')      
+    else:
+        return render_template('carro.html')
+
+@app.route('/logout')
+def logout():
+    # remove the user from the session if it's there
+    session.pop('username',None)
+    return redirect(url_for('show_home'))
 
 def connect_db():
     """Retorna una conexión a la BD"""
@@ -32,37 +60,61 @@ def init_db():
     db.commit()
     db.close()
 
+
 @app.route('/')
 def show_home():
-    db = connect_db()
-    cur = db.execute('SELECT title, description FROM entry ORDER BY id DESC')
-    entries = cur.fetchall()
-    db.close()
-    return render_template('home.html', entries=entries)
+    return render_template('home.html')
 
 @app.route('/bartsch')
 def show_bartsch():
-    db = connect_db()
-    cur = db.execute('SELECT title, description FROM entry ORDER BY id DESC')
-    entries = cur.fetchall()
-    db.close()
-    return render_template('entries.html', entries=entries)
+    return render_template('quienes_somos.html')
 
 @app.route('/cervezas')
 def show_cervezas():
-    db = connect_db()
-    cur = db.execute('SELECT title, description FROM entry ORDER BY id DESC')
-    entries = cur.fetchall()
+    db = connect_db2()
+    cur = db.execute('SELECT nombre, descripcion, grados,img_url FROM cerveza ORDER BY id DESC')
+    cerveza = cur.fetchall()
     db.close()
-    return render_template('productos.html', entries=entries)
+    return render_template('productos.html', cervezas=cerveza)
 
 @app.route('/carro')
 def new_compra():
     db = connect_db2()
-    cur = db.execute('SELECT nombre, descripcion,precio_neto,img_url FROM producto ORDER BY id DESC')
+    cur = db.execute('SELECT p.id,p.nombre, p.descripcion,p.precio_neto,b.stock,p.img_url FROM producto p,bodega b WHERE  p.id=b.id_producto ORDER BY p.id DESC')
     producto = cur.fetchall()
     db.close()
-    return render_template('carro.html', productos=producto)
+
+    db = connect_db2()
+    cur = db.execute('SELECT nombre, descripcion,grados,img_url FROM cerveza ORDER BY id DESC')
+    cerveza = cur.fetchall()
+    db.close()
+
+    return render_template('carro.html', productos=producto, cervezas=cerveza)
+
+@app.route('/carro', methods=['GET', 'POST'])
+def show_carro():
+    if request.method == 'GET':
+        return "Ajilao"
+    elif request.method == 'POST':
+    	if request.form['boton_carro'] == '5':
+    		return render_template('index.php')
+    	else:
+    		return request.form['cantidad']
+    else:
+        return "Acceso denegado"
+
+@app.route('/perfil')
+def show_perfil():
+    return render_template('perfil.html')
+
+@app.route('/empresa')
+def show_empresa():
+    return render_template('perfil_empresa.html')
+
+@app.route('/cuenta')
+def show_cuenta():
+    return render_template('perfil_cuenta.html')
+
 
 @app.route('/form', methods=['GET', 'POST'])
 def new_post():
@@ -73,7 +125,8 @@ def new_post():
         description = request.form['description']
         db = connect_db()
         db.execute(
-            'INSERT INTO entry (title, description) values (?, ?)',[title, description])
+            'INSERT INTO entry (title, description) values (?, ?)',[title, description]
+        )
         db.commit()
         db.close()
         return u"Operación exitosa"
@@ -93,6 +146,18 @@ def new_registro():
         db.commit()
         db.close()
         return u"Operación exitosa"
+    else:
+        return "Acceso denegado"
+
+@app.route('/contacto', methods=['GET', 'POST'])
+def new_contacto():
+    if request.method == 'GET':
+        return render_template('contacto.html')
+    elif request.method == 'POST':
+    	nombre = request.form['nombre']
+    	email = request.form['email']
+    	mensaje = request.form['mensaje']
+    	return mensaje
     else:
         return "Acceso denegado"
 

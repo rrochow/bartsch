@@ -1,0 +1,5 @@
+crear base de datos mediante un script
+
+sqlite3 nombre_bd.db < script.sql
+
+git remote add origin rodmast@github.com:/rrochow/bartsch
