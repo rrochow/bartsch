@@ -6,31 +6,35 @@
 {% block content %}
 <div class="container">
 <h2>Registro de Cliente</h2>
+ <p class = "text-warning">{{ error }}</p>
+
+
 <div class="well col-sm-6">
+
     <form class="form-horizontal" role="form" name="input" 
         action="{{ url_for('new_registro') }}" method="post" enctype="multipart/form-data">
 
         <div class="form-group">
             <div class="col-sm-offset-1 col-sm-10">
-                <input class="form-control" type="email" name="title" placeholder="Ingresar Correo">
+                <input name="correo" type="email" class="form-control"   placeholder="Ingresar Correo">
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-1 col-sm-10">
-                <input type="password" class="form-control" placeholder="Contraseña">
+                <input name = "clave" type="password" class="form-control" placeholder="Contraseña">
             </div>
         </div>
         <div class="form-group">          
             <div class="col-sm-offset-1 col-sm-10">
-                <input type="password" class="form-control" placeholder="Confirmar Contraseña">
+                <input name ="clave2" type="password" class="form-control" placeholder="Confirmar Contraseña">
             </div>
         </div>
-
         <div class="form-group">
             <div class="col-sm-offset-1 col-sm-4">
             <input type="submit" value="Registrarse" class="btn btn-default">
             </div>
         </div>
+        
     </form>
 </div>
 </div>

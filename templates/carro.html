@@ -3,32 +3,19 @@
 {% block content %}
 
 <div class="container">
-
-	<h2>Tipo de Cerveza</h2>
-
-	<div class="row">
-		{% for cerveza in cervezas %}
-		<div class="col-sm-6 col-md-2">
-	    	<a href="#" class="thumbnail">
-	      		<img src="{{url_for('static', filename=cerveza.img_url )}}" alt="...">
-	    	</a>
-	  	</div>
-		{% endfor %}
-	</div>
-
-	
+			<h2>Tu Carro de Compras</h2>
 	<div class="panel panel-default">
-		<div class="panel-heading"><h2>Productos</h2></div>
+		<div class="panel-heading"><h4>Detalle de la Reserva</h4></div>
 	  	<TABLE class = 'table table-bordered table-striped table-hover'>
 	  		<TR>
 	  			<th></th>
 	  			<TH>id</TH>
 				<TH>nombre</TH>
 				<TH>descripcion</TH>
-				<TH>precio</TH>
 				<TH>stock</TH>
 				<TH>cantidad</TH>
-				<TH>agregar</TH>
+				<TH>precio</TH>
+				<TH>eliminar</TH>
 			</TR>
 				
 			{% for producto in productos %}
@@ -39,31 +26,31 @@
 				</TD>
 				<TD>
 					<label name="label" class="control-label">
-						{{ producto.nombre }}
+						{{ producto.id }}
 					</label>
 				</TD>
 				<TD>{{ producto.nombre }}</TD>
 				<TD>{{ producto.descripcion }}</TD>
-				<TD>{{ producto.precio_neto }}</TD>
+				
 				<TD>{{ producto.stock }}</TD>
-				<TD nowrap>
+				<TD>
 					<div>
-						<input name = "cantidad" type="text" class="form-control" placeholder="Cantidad" value = "{{ producto.id }}">
+						<input name = "cantidad" type="number" class="form-control" placeholder="Cantidad" value = "{{ producto.id }}">
 					</div>
 				</TD>
+
+				<TD class="text-danger"><strong>${{ producto.precio_neto }}</strong></TD>
+
 				<TD>
-					<div class="col-xs-offset-0 col-xs-12" id='botones_formulario'>
-						<button type="submit" name="boton_carro" 
-								class="btn btn-success btn-lg" value="{{ producto.id }}">
-							<span class="glyphicon glyphicon-shopping-cart"></span>
-						</button>
-						<button type="button" class="btn btn-warning btn-lg">
+					<div class="">
+						<button type="button" class="btn btn-warning">
 							<span class="glyphicon glyphicon-remove"></span>
 						</button>
 					</div>
 				</TD>
 			</TR>
 			</form>
+
 			{% endfor %}
 
 			<TR>
@@ -74,16 +61,7 @@
 				<TD></TD>
 				<TD></TD>
 				<TD></TD>
-				<TD nowrap>
-					<div class="col-xs-offset-0 col-xs-12" id='botones_formulario'>
-						<button type="submit" class="btn btn-success btn-lg">
-							<span class="glyphicon glyphicon-shopping-cart"></span>
-						</button>
-						<button type="submit" class="btn btn-warning btn-lg">
-							<span class="glyphicon glyphicon-remove"></span>
-						</button>
-					</div>
-				</TD>
+				<TD></TD>
 			</TR>	
 		</TABLE>
 	</div>

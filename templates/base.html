@@ -50,7 +50,7 @@
         <li><a href="{{url_for('show_cervezas')}}">Cervezas</a></li>       
 
         {% if session.username %}
-          <li><a href="{{url_for('new_compra')}}">Comprar</a></li>
+          <li><a href="{{url_for('show_productos')}}">Comprar</a></li>
         {% else %}
           <li><a href="{{url_for('new_registro')}}">Registrarse</a></li>
         {% endif %}
@@ -101,8 +101,63 @@
 {% endblock content %}
 
 <footer>
-    <p>&copy; RodM@st 2014</p>
 
+<div class="footer-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div id="c198"><h3>Mi cuenta</h3><ul class="login_status">
+<li class="no_logeado"><a href="http://127.0.0.1:5000/registro"> Registrate</a></li>
+<li><a href="#"> Productos en el carro <span class="cant-producto">0</span></a></li>
+<!-- <li><a href="#">Productos agregados <span class="cant-producto">0</span></a></li> -->
+</ul><h3>Servicio</h3><ul>
+<li><a href="http://127.0.0.1:5000/cervezas"> Tipos de Cervezas</a></li>
+<li><a href="http://127.0.0.1:5000/"> Formas de Pago</a></li>
+ <li><a href="http://127.0.0.1:5000/"> Política de Despacho</a></li>
+ </ul><h3>Bartsch empresa</h3><ul>
+<li><a href="http://127.0.0.1:5000/bartsch"> Nosotros</a></li>
+<li><a href="http://127.0.0.1:5000/">Confidencialidad</a></li>
+<li><a href="http://127.0.0.1:5000/">Condiciones de Uso</a></li>
+</ul><p>&nbsp;</p>
+<p>&nbsp;</p></div>
+            </div>
+            <div class="col-sm-4">
+                <div id="c199"><div class="text"><p> </ul>
+</p>
+<h3>Cervecería</h3>
+<p><ul>
+</p>
+<p><p>Picarte 6,5 s/n Paillaco<br>
+</p>
+<p>       Teléfono: 56-2-957 02 80<br>
+</p>
+<p>        Email: <a href="mailto:info@bartsch.cl">info@bartsch.cl</a></p>
+</p>
+<p> </ul>
+</p>
+<h3 class="mt-30">Oficina Comercial</h3>
+<p><ul><p> Av. Santa Maria 5888 Paillaco<br>
+</p>
+<p>        Telefóno: 56 2 957 02 80 - 957 0100<br>
+</p>
+<p>         Email: <a href="mailto:info@bartsch.cl">info@bartsch.cl</a> </p>
+</p>
+<p>      </ul>
+</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p></div></div>
+            </div>
+            <div class="col-sm-4">
+                <div id="c213"><h3>Síguenos</h3></div><div id="c212"><div id="sexybookmarks_c212" class="sexybookmarks sexybookmarks-bg-sexy"><ul class="socials"><div class="tx-sexybookmarks-pi1">
+    <li class="sexy-facebook"><a href="http://www.facebook.com/share.php?v=4&amp;src=bm&amp;u=http%3A%2F%2Flocalhost%2Ftypo3%2F&amp;t=you%20have%20succesfully%20installed%20TYPO3" class="external" title="Facebook">Share this on Facebook</a></li><li class="sexy-twitter"><a href="http://twitter.com/share?url=http%3A%2F%2Flocalhost%2Ftypo3%2F&amp;via=you_have_succesfully_installed_typo3" class="external" title="Twitter">Tweet This!</a></li>
+  </div>
+  </ul><div style="clear:both;"></div></div></div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+</div>
 </footer>
 
 </body>

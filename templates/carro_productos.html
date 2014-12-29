@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class = "container">
+  <h2>Productos Bartsch</h2>
+  <p>
+    <span class="glyphicon glyphicon-shopping-cart"></span>
+    <a href="{{ url_for('show_carro') }}">Carro de Compras <span class="badge">{{ cantidad }}</span></a>
+  </p>
+  <!--/ Cuadro con Producto-->
+  <div class="row">
+      {% for producto in productos %}
+        <div class="col-sm-3">
+          <div class="thumbnail">
+            <img src="{{url_for('static', filename = producto.img_url )}}" width="70" height="70">
+            <div class="caption">
+              <h4>{{ producto.nombre }}</h4>
+              <p>{{ producto.descripcion }}</p>
+              <p class="text-danger"><strong>${{ producto.precio_neto }}</strong></p>
+              
+              <p>
+                <a href="{{ url_for('agregar_al_carro',id_producto=producto.id,cantidad=1 ) }}" class="btn btn-primary" role="button">
+                  + Agregar al carro
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </form>
+  </div>
+</div>
+{% endblock content %}
+
+
+
+
+
+
