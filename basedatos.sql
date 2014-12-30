@@ -71,6 +71,12 @@ create table empresa_cliente (
   foreign key(id_cliente) REFERENCES cliente(id)
 );
 
+CREATE TRIGGER crear_empresa AFTER INSERT 
+ON cliente
+BEGIN
+   INSERT INTO empresa_cliente (id_cliente) VALUES (new.id);
+END;
+
 insert into cerveza (nombre, descripcion, grados,img_url) 
 	values ('Cerveza Lager','Graduación en torno a 5%. De color son rubias doradas con reflejos ámbar. Sus aromas están marcados por la malta con notas ligeramente tostadas y de lúpulo. Su cremosidad queda marcada en las paredes del vaso........................',8,'imagenes/cerveza01.jpg');
 
@@ -115,8 +121,3 @@ insert into cliente (correo, clave) values ("nico@araneda.cl","1234");
 insert into cliente (correo, clave) values ("alonso@parra.cl","1234");
 insert into cliente (correo, clave) values ("rodolfo@diaz.cl","1234");
 insert into cliente (correo, clave) values ("miguel@silva.cl","1234");
-
-insert into empresa_cliente (id_cliente) values (1);
-insert into empresa_cliente (id_cliente) values (2);
-insert into empresa_cliente (id_cliente) values (3);
-insert into empresa_cliente (id_cliente) values (4);

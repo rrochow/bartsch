@@ -6,7 +6,7 @@
 {% block content %}
 <div class="container">
 <h2>Perfil de usuario</h2>
-<h4>{{ session.username }}</h4>
+<h4>{{ session.username }} <em class="text-success">{{ mensaje }}</em></h4>
 <div class="well col-sm-8">
 
     <ul class="nav nav-tabs">
@@ -16,7 +16,7 @@
     </ul>
 
     <form class="form-horizontal" role="form" name="input" 
-        action="{{ url_for('new_contacto') }}" method="post" enctype="multipart/form-data">
+        action="{{ url_for('modificar_empresa') }}" method="post" enctype="multipart/form-data">
 
         <div class="form-group">  
             {% for empresa in empresas %}       
@@ -24,15 +24,15 @@
                 <label class="control-label">Rut</label> 
                 <input class="form-control" type="text" name="rut" value='{{empresa.rut}}'>
                 <label class="control-label">Nombre</label>
-                <input class="form-control" type="text" name="nombre" value='{{empresa.rut}}'>
+                <input class="form-control" type="text" name="nombre" value='{{empresa.nombre}}'>
                 <label class="control-label">Dirección</label>
-                <input class="form-control" type="text" name="direccion" value='{{empresa.rut}}'>
+                <input class="form-control" type="text" name="direccion" value='{{empresa.direccion}}'>
                 <label class="control-label">Ciudad</label>
-                <input class="form-control" type="text" name="ciudad" value='{{empresa.rut}}'>
+                <input class="form-control" type="text" name="ciudad" value='{{empresa.ciudad}}'>
                 <label class="control-label">Telefono</label>
-                <input class="form-control" type="text" name="telefono" value='{{empresa.rut}}'>
+                <input class="form-control" type="text" name="telefono" value='{{empresa.telefono}}'>
                 <label class="control-label">Correo</label>
-                <input class="form-control" type="email" name="correo"  value='{{empresa.rut}}'>
+                <input class="form-control" type="email" name="correo"  value='{{empresa.email}}'>
             </div>
             {% endfor %}
         </div>

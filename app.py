@@ -276,16 +276,16 @@ def datos_empresa():
         'SELECT rut,nombre,direccion,ciudad,telefono,email FROM empresa_cliente WHERE id_cliente=?',
         [session['id']]
     )
-    query = cur.fetchall()
+    empresa = cur.fetchall()
     db.close()
-    return query  
+    return empresa  
 
 @app.route('/empresa')
 def show_empresa():
     empresa = datos_empresa()
-    return render_template('perfil_empresa.html',empresa=empresa)
+    return render_template('perfil_empresa.html',empresas=empresa)
 
-@app.route('/empresa', methods=['GET','POST'])
+@app.route('/empresa_modificar', methods=['GET','POST'])
 def modificar_empresa():
     if request.method == 'POST':
         rut = request.form['rut']
@@ -302,7 +302,7 @@ def modificar_empresa():
         db.commit()
         db.close()
         empresa = datos_empresa()
-        return render_template('perfil_empresa.html',empresa=empresa,mensaje='datos modificados con exito')          
+        return render_template('perfil_empresa.html',empresas=empresa,mensaje='datos modificados con exito')          
     else:
         return u""
 
