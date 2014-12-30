@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 #libreria validacion de mail solamente chrome
-import re
+#libreria time para trabajar con fechas
+import re,time
 #libreria de servidor de correo
 from flask.ext.mail import Message, Mail
 from sqlite3 import dbapi2 as sqlite3
@@ -52,19 +53,37 @@ def init_db():
     db.commit()
     db.close()
 
-#Login y Logout
+#inicializamos variables
+def init_variables():
+    global carro
+    global total_carro
+    total_carro = 0
+    total_compra = 0
+    del carro
+    carro = []
+    pass 
+
+##################
+#Login y Logout  #
+##################
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         user = request.form["user"]
         password = request.form["password"]
         db = connect_db()
-        result = db.execute('SELECT correo, clave FROM cliente WHERE correo=? AND clave = ?',[user, password])
+        result = db.execute('SELECT id, correo, clave FROM cliente WHERE correo=? AND clave = ?',[user, password])
         matches = result.fetchall()
         db.close()
+
+        for cliente in matches:
+            id_user = cliente['id']
+
         if len(matches) > 0: #The user and pass combination exits
             user_data = matches[0]
             session['username'] = user
+            session['id'] = id_user
             return redirect(url_for('show_home'))
         else:
             return render_template('home.html')      
@@ -76,13 +95,13 @@ def logout():
     # remove the user from the session if it's there
     session.pop('username',None)
     #reiniciamos variables del carro de compras
-    global carro
-    global total_carro
-    total_carro = 0
-    del carro
-    carro = []   
+    init_variables()
+
     return redirect(url_for('show_home'))
 
+#######################
+# Despliegue de Datos #
+#######################
 
 @app.route('/')
 def show_home():
@@ -100,12 +119,14 @@ def show_cervezas():
     db.close()
     return render_template('cervezas.html', cervezas=cerveza)
 
-#carro de compras
+###################
+#carro de compras #
+###################
 
 @app.route('/carro')
 def show_productos():
     db = connect_db()
-    cur = db.execute('SELECT id,nombre, descripcion,precio_neto,img_url FROM producto ORDER BY id DESC')
+    cur = db.execute('SELECT id,nombre, descripcion,precio_neto,img_url FROM producto ORDER BY id_cerveza ASC')
     producto = cur.fetchall()
     db.close()
 
@@ -148,7 +169,41 @@ def agregar_al_carro(id_producto,cantidad):
         carro.append(producto)
         return redirect(url_for('show_productos'))
 
+@app.route('/reserva')
+def crear_reserva():
+    #insertamos una nueva reserva
+    fecha = time.strftime("%d/%m/%Y")
+    db = connect_db()
+    db.execute(
+        'INSERT INTO reserva (fecha,tipo_documento,id_cliente) VALUES (?, ?, ?)',
+        [fecha, 'boleta',session['id']]
+    )
+    db.commit()
+    db.close()
 
+    #obtenemos el id de la reserva nueva
+    db = connect_db()
+    cur = db.execute(
+        'SELECT MAX(id) AS id FROM reserva WHERE id_cliente=?',[session['id']]
+    )
+    query = cur.fetchall()
+    db.close()
+
+    for reserva in query:
+        id_reserva = reserva['id']
+
+    #insertamos los productos asociados
+    db = connect_db()    
+    for i in range(len(carro)):
+        cur = db.execute(
+            'INSERT INTO producto_reserva (id_reserva,id_producto,cantidad) VALUES (?,?,?)',
+            [ id_reserva, carro[i][0], carro[i][1] ]
+        )
+        db.commit()    
+    db.close()
+    #reiniciamos el carro
+    init_variables()
+    return render_template("carro_reserva.html")
 
 @app.route('/carro_compras')
 def show_carro():
@@ -173,58 +228,162 @@ def eliminar_del_carro(id_producto,cantidad):
             return redirect(url_for('show_carro'))
 
 
+#####################
+#Perfil del Cliente #
+#####################
 
-#Perfil del Cliente
+#Mostrar y Modificar Datos del Cliente
+def datos_cliente():
+    db = connect_db()
+    cur = db.execute(
+        'SELECT rut,nombre,apellido,direccion,telefono FROM cliente WHERE correo=?',
+        [session['username']]
+    )
+    cliente = cur.fetchall()
+    db.close()
+    return cliente      
 
 @app.route('/perfil')
 def show_perfil():
-    return render_template('perfil.html')
+    cliente = datos_cliente()  
+    return render_template('perfil.html',cliente=cliente)
+
+@app.route('/perfil', methods=['GET','POST'])
+def modificar_perfil():
+    if request.method == 'POST':
+        rut = request.form['rut']
+        nom = request.form['nombre']
+        ape = request.form['apellido']
+        dire = request.form['direccion']
+        tele = request.form['telefono']
+        db = connect_db()
+        db.execute(
+            'UPDATE cliente SET rut=?,nombre=?,apellido=?,direccion=?,telefono=? WHERE correo=?',
+            [rut,nom,ape,dire,tele,session['username']]
+        )
+        db.commit()
+        db.close()
+        cliente = datos_cliente()
+        mensaje = "(datos modificados)"
+        return render_template('perfil.html',cliente=cliente,mensaje=mensaje)          
+    else:
+        return u""
+
+#Mostrar y modificar datos de la empresa
+def datos_empresa():
+    db = connect_db()
+    cur = db.execute(
+        'SELECT rut,nombre,direccion,ciudad,telefono,email FROM empresa_cliente WHERE id_cliente=?',
+        [session['id']]
+    )
+    query = cur.fetchall()
+    db.close()
+    return query  
 
 @app.route('/empresa')
 def show_empresa():
-    return render_template('perfil_empresa.html')
+    empresa = datos_empresa()
+    return render_template('perfil_empresa.html',empresa=empresa)
 
+@app.route('/empresa', methods=['GET','POST'])
+def modificar_empresa():
+    if request.method == 'POST':
+        rut = request.form['rut']
+        nom = request.form['nombre']
+        dire = request.form['direccion']
+        ciu = request.form['ciudad']
+        tel = request.form['telefono']
+        cor = request.form['correo']
+        db = connect_db()
+        db.execute(
+            'UPDATE empresa_cliente SET rut=?,nombre=?,direccion=?,ciudad=?,telefono=?,email=? WHERE id_cliente=?',
+            [rut,nom,dire,ciu,tel,cor,session['id']]
+        )
+        db.commit()
+        db.close()
+        empresa = datos_empresa()
+        return render_template('perfil_empresa.html',empresa=empresa,mensaje='datos modificados con exito')          
+    else:
+        return u""
+
+#Mostrar y modificar datos de la cuenta cliente
 @app.route('/cuenta')
 def show_cuenta():
     return render_template('perfil_cuenta.html')
 
-#registro de usuario
+@app.route('/cuenta', methods=['GET','POST'])
+def modificar_cuenta():
+    if request.method == 'POST':
+        #validamos claves
+        if request.form['clave1']=='' or request.form['clave2']=='':
+            return render_template('perfil_cuenta.html',mensaje='campo vacio de claves')
 
-def is_email_address_valid(correo):
-    """Validate the email address using a regex."""
-    if not re.match("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$", correo):
-        return False
+        if request.form['clave1'] != request.form['clave2']:
+            return render_template('perfil_cuenta.html',mensaje='no coinciden las claves')
+
+        db = connect_db()
+        db.execute(
+            'UPDATE cliente SET clave=? WHERE correo=?',
+            [request.form['clave1'],session['username']]
+        )
+        db.commit()
+        db.close()
+
+        return render_template('perfil_cuenta.html',mensaje='clave modificada con exito')          
     else:
-        return True
+        return u""
+
+######################
+#registro de usuario #
+######################
 
 @app.route('/registro', methods=['GET','POST'])
 def new_registro():
     if request.method == 'GET':
         return render_template("registrarse.html")
     elif request.method == 'POST':
+
+        #validamos los datos correctos
+        if request.form['correo']=='':
+            return render_template('registrarse.html',error='campo de correo vacio')
+
+        if request.form['clave1']=='' or request.form['clave2']=='':
+            return render_template('registrarse.html',error='campo vacio de claves')
+
+        if request.form['clave1'] != request.form['clave2']:
+            return render_template('registrarse.html',error='no coinciden las claves')
+
+        #verificamos que la cuenta no exista
         correo = request.form['correo']
         db = connect_db()
         result = db.execute('SELECT correo FROM cliente WHERE correo=?', [correo])
         matches = result.fetchall()
         db.close()
 
-        if len(matches) > 0: #The user and pass combination exits
-            return render_template('registrarse.html',error='correo ya registrado')
+        if len(matches) > 0:
+            return render_template('registrarse.html',error='error: La cuenta ya existe')
         else:
+            #si la cuenta no existe  agregamos la nueva cuenta
             correo = request.form['correo']
-            clave = request.form['clave']
+            clave = request.form['clave1']
             db = connect_db()
             db.execute(
                 'INSERT INTO cliente (correo, clave) values (?, ?)',[correo, clave]
             )
             db.commit()
             db.close()            
-            return render_template('registrarse.html',error='Registrado con exito')  
+            return render_template('registrarse.html',error='Cuenta creada con exito')  
     else:
         return render_template("home.html")
 
 
 #Metodos Email
+def is_email_address_valid(correo):
+    """Validate the email address using a regex."""
+    if not re.match("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$", correo):
+        return False
+    else:
+        return True
 
 @app.route('/contacto', methods=['GET', 'POST'])
 def new_contacto():

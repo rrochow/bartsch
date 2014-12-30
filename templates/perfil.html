@@ -6,7 +6,8 @@
 {% block content %}
 <div class="container">
 <h2>Perfil de usuario</h2>
-<h4>{{ session.username }}</h4>
+<h4>{{ session.username }} <em class="text-success">{{ mensaje }}</em> </h4>
+
 <div class="well col-sm-8">
 
     <ul class="nav nav-tabs">
@@ -16,22 +17,27 @@
     </ul>
 
     <form class="form-horizontal" role="form" name="input" 
-        action="{{ url_for('new_contacto') }}" method="post" enctype="multipart/form-data">
-
+        action="{{ url_for('modificar_perfil') }}" method="post" enctype="multipart/form-data">
+        {% for client in cliente %}
         <div class="form-group">
             <div class="col-sm-8">
                 <label class="control-label">Rut</label>
-                <input class="form-control" type="text" name="rut" placeholder="Ingresar Rut">
+                <input class="form-control" type="text" name="rut" value='{{ client.rut }}'>
+
                 <label class="control-label">Nombres</label>
-                <input class="form-control" type="text" name="nombre" placeholder="Ingresar Nombres">
+                <input class="form-control" type="text" name="nombre" value='{{ client.nombre }}'>
+
                 <label class="control-label">Apellidos</label>
-                <input class="form-control" type="text" name="apellido" placeholder="Ingresar Apellidos">
+                <input class="form-control" type="text" name="apellido" value='{{ client.apellido }}'>
+
                 <label class="control-label">Dirección</label>
-                <input class="form-control" type="text" name="direccion" placeholder="Ingresar Dirección">
+                <input class="form-control" type="text" name="direccion" value='{{ client.direccion }}'>
+
                 <label class="control-label">Telefono</label>
-                <input class="form-control" type="text" name="telefono" placeholder="Ingresar Telefono">
+                <input class="form-control" type="text" name="telefono" value='{{ client.telefono }}'>
             </div>
         </div>
+        {% endfor %}
 
         <div class="form-group">
             <div class="col-sm-8">

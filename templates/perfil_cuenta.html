@@ -6,7 +6,7 @@
 {% block content %}
 <div class="container">
 <h2>Perfil de usuario</h2>
-<h4>{{ session.username }}</h4>
+<h4>{{ session.username }} <em class="text-success">{{ mensaje }}</em> </h4>
 <div class="well col-sm-8">
 
     <ul class="nav nav-tabs">
@@ -16,16 +16,16 @@
     </ul>
 
     <form class="form-horizontal" role="form" name="input" 
-        action="{{ url_for('new_contacto') }}" method="post" enctype="multipart/form-data">
+        action="{{ url_for('modificar_cuenta') }}" method="post" enctype="multipart/form-data">
 
         <div class="form-group">
             <div class="col-sm-8">
                 <label class="control-label">Correo</label>
-                <input class="form-control" type="text" name="rut" value='{{ session.username }}' readonly>
+                <input class="form-control" type="text" name="correo" value='{{ session.username }}' readonly>
                 <label class="control-label">Ingrese Nueva Contraseña</label>
-                <input class="form-control" type="password" name="nombre" placeholder="Ingresar Nueva Contraseña">
+                <input class="form-control" type="password" name="clave1" placeholder="Ingresar Nueva Contraseña">
                 <label class="control-label">Repita Nueva Contraseña</label>
-                <input class="form-control" type="password" name="apellido" placeholder="Repetir Contraseña">
+                <input class="form-control" type="password" name="clave2" placeholder="Repetir Contraseña">
             </div>
         </div>
 

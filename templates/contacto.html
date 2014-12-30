@@ -6,12 +6,13 @@
 {% block content %}
 <div class="container">
 <h2>Contactenos</h2>
-<div class="well col-sm-8">
+
+<div class="well col-sm-6">
     <form class="form-horizontal" role="form" name="input" 
         action="{{ url_for('new_contacto') }}" method="post" enctype="multipart/form-data">
 
         <div class="form-group">           
-            <div class="col-sm-8">
+            <div class="col-sm-offset-1 col-sm-10">
                 <label for="nombre" class="control-label">Nombre</label>
                 <input class="form-control" type="text" name="nombre" placeholder="Ingresar Nombre">
                 <label for="email" class="control-label">Email:</label>
@@ -22,7 +23,7 @@
         </div>
 
         <div class="form-group">
-            <div class="col-sm-12">
+            <div class="col-sm-offset-1 col-sm-12">
                 <input type="submit" value="Enviar Mensaje" class="btn btn-default">
             </div>
         </div>

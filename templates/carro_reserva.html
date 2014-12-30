@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+			<h2>Tu Carro de Compras</h2>
+	<div class="panel panel-default">
+		<div class="panel-heading"><h4 class = "text-success">Reserva Realizada con exito, gracias por preferirnos</h4></div>
+
+	</div>
+
+	<div class="panel panel-default">
+		<div class="panel-body" align = "right">
+			<a href="{{ url_for('show_home') }}" class="btn btn-success" role="button">
+				Volver a la pagina de inicio
+			</a>
+		</div>			
+	</div>
+
+</div>
+{% endblock content %}
+

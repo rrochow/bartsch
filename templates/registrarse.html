@@ -10,25 +10,22 @@
 
 
 <div class="well col-sm-6">
-
     <form class="form-horizontal" role="form" name="input" 
         action="{{ url_for('new_registro') }}" method="post" enctype="multipart/form-data">
 
         <div class="form-group">
             <div class="col-sm-offset-1 col-sm-10">
-                <input name="correo" type="email" class="form-control"   placeholder="Ingresar Correo">
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-1 col-sm-10">
-                <input name = "clave" type="password" class="form-control" placeholder="Contraseña">
-            </div>
-        </div>
-        <div class="form-group">          
-            <div class="col-sm-offset-1 col-sm-10">
+                <label class="control-label">Correo</label>
+                <input name="correo" type="email" class="form-control" placeholder="Ingresar Correo">
+
+                <label class="control-label">Contraseña</label>
+                <input name = "clave1" type="password" class="form-control" placeholder="Contraseña">
+
+                <label class="control-label">Confirmar Contraseña</label>
                 <input name ="clave2" type="password" class="form-control" placeholder="Confirmar Contraseña">
             </div>
         </div>
+
         <div class="form-group">
             <div class="col-sm-offset-1 col-sm-4">
             <input type="submit" value="Registrarse" class="btn btn-default">

@@ -50,16 +50,22 @@ create table reserva (
 
 create table cliente (
   id integer primary key autoincrement,
-  correo text,
-  clave text
+  correo text not null,
+  clave text not null,
+  rut text,
+  nombre text,
+  apellido text,
+  direccion text,
+  telefono text
 );
 
 create table empresa_cliente (
   id integer primary key autoincrement,
+  rut text,
   nombre text,
   direccion text,
   ciudad text,
-  fono integer,
+  telefono integer,
   email text,
   id_cliente integer,
   foreign key(id_cliente) REFERENCES cliente(id)

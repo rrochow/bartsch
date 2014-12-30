@@ -66,9 +66,13 @@
 			<a href="{{ url_for('show_productos') }}" class="btn btn-primary" role="button">
 				Agregar mas productos
 			</a>
-			<a href="" class="btn btn-success" role="button">
-				Realizar la reserva
-			</a>
+			<!-- Si existen productos en el carro se activa el boton reserva-->
+			{% if carro %}
+				<a href="{{ url_for('crear_reserva') }}" class="btn btn-success" role="button">
+					Realizar la reserva
+				</a>
+			{% endif %}
+
 		</div>			
 	</div>
 
