@@ -88,7 +88,7 @@ insert into producto (nombre, descripcion, precio_neto,img_url,id_cerveza)
 insert into producto (nombre, descripcion, precio_neto,img_url,id_cerveza) 
   values ('Botella 350cc', 'Botella 350cc Cerveza Stout',3000,'imagenes/botella350.jpg',2);
 insert into producto (nombre, descripcion, precio_neto,img_url,id_cerveza) 
-  values ('Botella 500cc', 'Botella 500cc Cerveza Lager',3500,'imagenes/botella500.jpg',2);
+  values ('Botella 500cc', 'Botella 500cc Cerveza Stout',3500,'imagenes/botella500.jpg',2);
 
 insert into producto (nombre, descripcion, precio_neto,img_url,id_cerveza) 
   values ('Barril 50L', 'Barril de 45 Litros Cerveza Trigo',45000,'imagenes/barril.jpg',3);

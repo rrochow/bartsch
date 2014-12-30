@@ -25,8 +25,10 @@ MAIL_USE_SSL= True
 MAIL_USERNAME = 'testcerveza@gmail.com'
 MAIL_PASSWORD = 'grupotaller'
 
-#inicializacion carro de compras
-carro = 0
+#variable carro tendra la cantidad total y producto,cantidad
+carro = []
+total_carro = 0
+total_compra = 0
 
 app = Flask(__name__)
 
@@ -65,7 +67,7 @@ def login():
             session['username'] = user
             return redirect(url_for('show_home'))
         else:
-            return render_template('form.html')      
+            return render_template('home.html')      
     else:
         return render_template('carro.html')
 
@@ -73,6 +75,12 @@ def login():
 def logout():
     # remove the user from the session if it's there
     session.pop('username',None)
+    #reiniciamos variables del carro de compras
+    global carro
+    global total_carro
+    total_carro = 0
+    del carro
+    carro = []   
     return redirect(url_for('show_home'))
 
 
@@ -101,26 +109,69 @@ def show_productos():
     producto = cur.fetchall()
     db.close()
 
-    return render_template('carro_productos.html', productos=producto,cantidad = carro)
+    return render_template('carro_productos.html', productos=producto,cantidad = total_carro)
 
 @app.route('/carro/<int:id_producto>/<int:cantidad>')
 def agregar_al_carro(id_producto,cantidad):
     global carro
-    carro = cantidad + carro
+    global total_carro
+    total_carro = cantidad + total_carro
+    
+    #obtenemos datos del producto
     db = connect_db()
-    cur = db.execute('SELECT id,nombre, descripcion,precio_neto,img_url FROM producto ORDER BY id DESC')
-    producto = cur.fetchall()
+    cur = db.execute(
+        'SELECT p.nombre, p.descripcion,b.stock,p.precio_neto,p.img_url FROM producto p,bodega b WHERE  p.id=b.id_producto and p.id = ?',[id_producto]
+    )
+    consulta = cur.fetchall()
     db.close()
 
-    return render_template('carro_productos.html', productos=producto,cantidad=carro)
+    for salida in consulta:
+        nombre=salida['nombre']
+        descripcion=salida['descripcion']
+        stock=salida['stock']
+        precio_neto=salida['precio_neto']
+        img_url=salida['img_url']
+
+    #agregamos al carro la lista producto={id,cantidad}
+    producto = [id_producto,cantidad,nombre,descripcion,stock,precio_neto,img_url]
+    hit = 'false'
+    if len(carro)>0:
+        for i in range(len(carro)):
+            if id_producto == carro[i][0]:
+                carro[i][1]= carro[i][1]+cantidad
+                hit = 'true'
+                return redirect(url_for('show_productos'))
+        if hit == 'false':
+            carro.append(producto)
+            return redirect(url_for('show_productos'))    
+    else:
+        carro.append(producto)
+        return redirect(url_for('show_productos'))
+
+
 
 @app.route('/carro_compras')
 def show_carro():
-    db = connect_db()
-    cur = db.execute('SELECT p.id,p.nombre, p.descripcion,p.precio_neto,b.stock,p.img_url FROM producto p,bodega b WHERE  p.id=b.id_producto ORDER BY p.id DESC')
-    producto = cur.fetchall()
-    db.close()
-    return render_template('carro.html',productos=producto)
+    global total_compra
+    total_compra = 0
+    if total_carro>0:
+        for i in range(len(carro)):
+            total_compra = carro[i][1] * carro[i][5] + total_compra
+        return render_template('carro.html',carro=carro,total=total_compra)
+    else:
+        return render_template('carro.html')
+
+@app.route('/carro_compras/<int:id_producto>/<int:cantidad>')
+def eliminar_del_carro(id_producto,cantidad):    
+    global carro
+    global total_carro
+    total_carro = total_carro - cantidad
+
+    for i in range(len(carro)):
+        if id_producto == carro[i][0]:
+            del carro[i]
+            return redirect(url_for('show_carro'))
+
 
 
 #Perfil del Cliente
