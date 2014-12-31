@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+#librería Mapas Google
+from flask.ext.googlemaps import Map
+from flask.ext.googlemaps import GoogleMaps
 #libreria validacion de mail solamente chrome
 #libreria time para trabajar con fechas
 import re,time
@@ -35,6 +38,7 @@ app = Flask(__name__)
 
 app.config.from_object(__name__)
 mail = Mail(app)
+GoogleMaps(app)
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
 #conexion a la base de datos
@@ -109,7 +113,20 @@ def show_home():
 
 @app.route('/bartsch')
 def show_bartsch():
-    return render_template('quienes_somos.html')
+    mymap = Map(
+        identifier="view-side",
+        lat=37.4419,
+        lng=-122.1419,
+        markers=[(37.4419, -122.1419)]
+    )
+    sndmap = Map(
+        identifier="sndmap",
+        lat=37.4419,
+        lng=-122.1419,
+        markers={'http://maps.google.com/mapfiles/ms/icons/green-dot.png':[(37.4419, -122.1419)],
+        'http://maps.google.com/mapfiles/ms/icons/blue-dot.png':[(37.4300, -122.1400)]}
+    )
+    return render_template('quienes_somos.html', mymap=mymap, sndmap=sndmap)
 
 @app.route('/cervezas')
 def show_cervezas():

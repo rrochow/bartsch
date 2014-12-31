@@ -10,5 +10,6 @@ Basic blog developed in Flask
 =======
 Basic blog developed in Flask
 
-probando
->>>>>>> origin/master
+Crear Base de Datos SQLite3
+==============================
+ sqlite3 basedatos.db < basedatos.sql

@@ -22,5 +22,13 @@
 			Llegar a ser una empresa altamente competitiva en el mercado de la cerveza artesanal.
 		</p>
 	</div>
+	<body>
+        <h1>Estamos ubicados</h1>
+        <h2> </h2>
+        {% with map=googlemap_obj("another-map", 37.4419, -122.1419, markers=[(37.4419, -122.1419), (37.4300, -122.1400)]) %}
+            {{map.html}}
+            {{map.js}}
+        {% endwith %}
+    </body>
 </div>
 {% endblock content %}
