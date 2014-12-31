@@ -25,10 +25,10 @@
 	<body>
         <h1>Estamos ubicados</h1>
         <h2> </h2>
-        {% with map=googlemap_obj("another-map", 37.4419, -122.1419, markers=[(37.4419, -122.1419), (37.4300, -122.1400)]) %}
-            {{map.html}}
-            {{map.js}}
-        {% endwith %}
+        <p align="center">
+        	{{ mymap.html }}
+        	{{ mymap.js }}
+        </p>
     </body>
 </div>
 {% endblock content %}

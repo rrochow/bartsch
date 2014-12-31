@@ -34,8 +34,8 @@ carro = []
 total_carro = 0
 total_compra = 0
 
+#inicializamos app
 app = Flask(__name__)
-
 app.config.from_object(__name__)
 mail = Mail(app)
 GoogleMaps(app)
@@ -115,18 +115,12 @@ def show_home():
 def show_bartsch():
     mymap = Map(
         identifier="view-side",
-        lat=37.4419,
-        lng=-122.1419,
-        markers=[(37.4419, -122.1419)]
+        lat=-40.069423,
+        lng=-72.871640,
+        markers=[(-40.069423, -72.871640)]
     )
-    sndmap = Map(
-        identifier="sndmap",
-        lat=37.4419,
-        lng=-122.1419,
-        markers={'http://maps.google.com/mapfiles/ms/icons/green-dot.png':[(37.4419, -122.1419)],
-        'http://maps.google.com/mapfiles/ms/icons/blue-dot.png':[(37.4300, -122.1400)]}
-    )
-    return render_template('quienes_somos.html', mymap=mymap, sndmap=sndmap)
+    
+    return render_template('quienes_somos.html',mymap = mymap)
 
 @app.route('/cervezas')
 def show_cervezas():
