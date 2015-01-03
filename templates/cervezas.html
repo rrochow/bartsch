@@ -6,14 +6,15 @@
 <h2>Cervezas Bartsch</h2>
 <div class="row">
 {% for cerveza in cervezas %}
-  <div class="col-sm-4 col-md-4">
-    <div class="thumbnail">
-      <img src="{{url_for('static', filename = cerveza.img_url )}}" alt="...">
+  <div class="col-sm-4">
+    <div class="">
+      <img src="{{url_for('static', filename = cerveza.img_url )}}" width="200" height="300">
       <div class="caption">
         <h3>{{ cerveza.nombre }}</h3>
         <p>
         	{{ cerveza.descripcion }}
         </p>
+        <h5><strong>Grados alcoholicos : {{ cerveza.grados }}º</strong></h5>
       </div>
     </div>
   </div>
@@ -21,9 +22,6 @@
 </div>
 </div>
 {% endblock content %}
-
-
-
 
 
 

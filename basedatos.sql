@@ -78,14 +78,14 @@ BEGIN
 END;
 
 insert into cerveza (nombre, descripcion, grados,img_url) 
-	values ('Cerveza Lager','Graduación en torno a 5%. De color son rubias doradas con reflejos ámbar. Sus aromas están marcados por la malta con notas ligeramente tostadas y de lúpulo. Su cremosidad queda marcada en las paredes del vaso........................',8,'imagenes/cerveza01.jpg');
+	values ('Cerveza Lager','Graduación en torno a 5%. De color son rubias doradas con reflejos ámbar. Sus aromas están marcados por la malta con notas ligeramente tostadas y de lúpulo. Su cremosidad queda marcada en las paredes del vaso',5,'imagenes/cerveza01.png');
 
 
 insert into cerveza (nombre, descripcion, grados,img_url) 
-	values ('Cerveza Stout','La cerveza Porter es una cerveza menos amarga, densidades originales más bajas y menor grado de alcohol que las Stout. La cerveza Stout, recibe este nombre por ser la porter más fuerte. La stout es una cerveza de color..............',8,'imagenes/cerveza02.jpg');
+	values ('Cerveza Stout','La cerveza Porter es una cerveza menos amarga, densidades originales más bajas y menor grado de alcohol que las Stout. La cerveza Stout, recibe este nombre por ser la porter más fuerte. La stout es una cerveza de color',6,'imagenes/cerveza02.png');
 
 insert into cerveza (nombre, descripcion, grados,img_url) 
-	values ('Cerveza de Trigo','Su característica principal es su cáracter ácido, refrescante y espumoso, por lo que no es de extrañar que sea una cerveza muy popular en las areas donde tradicionalmente se produce, como son el sur de Alemania, Berlín y Bélgica.',8,'imagenes/cerveza03.jpg');
+	values ('Cerveza de Trigo','Su característica principal es su cáracter ácido, refrescante y espumoso, por lo que no es de extrañar que sea una cerveza muy popular en las areas donde tradicionalmente se produce, como son el sur de Alemania, Berlín y Bélgica.',5,'imagenes/cerveza03.png');
 
 
 insert into producto (nombre, descripcion, precio_neto,img_url,id_cerveza) 
@@ -111,7 +111,7 @@ insert into bodega (stock, id_producto) values (20,1);
 insert into bodega (stock, id_producto) values (22,2);
 insert into bodega (stock, id_producto) values (23,3);
 insert into bodega (stock, id_producto) values (24,4);
-insert into bodega (stock, id_producto) values (25,5);
+insert into bodega (stock, id_producto) values (0,5);
 insert into bodega (stock, id_producto) values (26,6);
 insert into bodega (stock, id_producto) values (27,7);
 insert into bodega (stock, id_producto) values (28,8);

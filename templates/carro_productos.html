@@ -18,11 +18,16 @@
             <h4>{{ producto.nombre }}</h4>
             <p>{{ producto.descripcion }}</p>
             <p class="text-danger"><strong>${{ producto.precio_neto }}</strong></p>
-            <p>
+            
+            {% if producto.stock > 0 %}
               <a href="{{ url_for('agregar_al_carro',id_producto=producto.id,cantidad=1 ) }}" class="btn btn-primary" role="button">
                   + Agregar al carro
               </a>
-            </p>
+            {% else %}
+              <a href="" class="btn btn-danger" role="button" disabled="disabled">
+                  + Sin Stock
+              </a>
+            {% endif %}            
           </div>
         </div>
 

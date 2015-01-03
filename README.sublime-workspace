@@ -1,0 +1,530 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"que",
+				"query"
+			],
+			[
+				"run",
+				"run_query"
+			],
+			[
+				"dato",
+				"datos_empresa"
+			],
+			[
+				"id_",
+				"id_cliente"
+			],
+			[
+				"perfil",
+				"perfil_cuenta"
+			],
+			[
+				"re",
+				"request"
+			],
+			[
+				"conne",
+				"connect_db"
+			],
+			[
+				"id",
+				"id_cliente"
+			],
+			[
+				"datos",
+				"datos_cliente"
+			],
+			[
+				"def",
+				"defs	Method"
+			],
+			[
+				"totl",
+				"total_compra"
+			],
+			[
+				"tot",
+				"total_compra"
+			],
+			[
+				"show_",
+				"show_productos"
+			],
+			[
+				"toa",
+				"total_carro"
+			],
+			[
+				"total",
+				"total_carro"
+			],
+			[
+				"fo",
+				"form"
+			],
+			[
+				"__",
+				"__name__"
+			],
+			[
+				"h",
+				"h2	Tag"
+			],
+			[
+				"l",
+				"li	Tag"
+			],
+			[
+				"PAR",
+				"PARDER"
+			],
+			[
+				"carga",
+				"carga_lista_Clientes"
+			],
+			[
+				"id_producto",
+				"id_producto_global"
+			],
+			[
+				"formulario_",
+				"formulario_producto"
+			],
+			[
+				"formulario",
+				"formulario_producto"
+			],
+			[
+				"json",
+				"json_registro"
+			],
+			[
+				"sku",
+				"sku_producto"
+			],
+			[
+				"obtener",
+				"obtener_Producto"
+			],
+			[
+				"correo",
+				"correo"
+			],
+			[
+				"on",
+				"onclick	Attr"
+			],
+			[
+				"precio",
+				"precio_bruto"
+			],
+			[
+				"cate",
+				"categoria_id"
+			],
+			[
+				"pre",
+				"precio_bruto"
+			],
+			[
+				"che",
+				"checkbox"
+			],
+			[
+				"check",
+				"checkbox"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"cmB",
+				"cmBox_sala"
+			],
+			[
+				"th",
+				"th"
+			],
+			[
+				"tr",
+				"tr	Tag"
+			],
+			[
+				"tabla",
+				"tabla_alumnos"
+			],
+			[
+				"data",
+				"dataType"
+			],
+			[
+				"color",
+				"background-color"
+			],
+			[
+				"agreg",
+				"agregar_Asistencia"
+			],
+			[
+				"con",
+				"conexion"
+			],
+			[
+				"json_",
+				"json_encode"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 297.0,
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control:",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/rodmast/Escritorio/GitHub/bartsch/app.py",
+		"/home/rodmast/Escritorio/GitHub/Bartsch - Taller/app.py",
+		"/home/rodmast/Escritorio/GitHub/Bartsch - Taller/templates/cervezas.html",
+		"/home/rodmast/Escritorio/GitHub/Bartsch - Taller/templates/carro_productos.html",
+		"/home/rodmast/Escritorio/GitHub/Bartsch - Taller/templates/quienes_somos.html",
+		"/home/rodmast/Escritorio/GitHub/Bartsch - Taller/templates/perfil_empresa.html",
+		"/home/rodmast/Escritorio/GitHub/Bartsch - Taller/templates/perfil.html",
+		"/home/rodmast/Escritorio/GitHub/Bartsch - Taller/templates/base.html",
+		"/home/rodmast/Escritorio/GitHub/Bartsch - Taller/templates/carro.html",
+		"/home/rodmast/Escritorio/GitHub/bartsch/basedatos.sql",
+		"/home/rodmast/Escritorio/GitHub/Bartsch - Taller/DatosWeb.sql",
+		"/home/rodmast/Escritorio/GitHub/bartsch/templates/perfil_empresa.html",
+		"/home/rodmast/Escritorio/GitHub/bartsch/templates/carro.html",
+		"/home/rodmast/Escritorio/GitHub/bartsch/templates/perfil_cuenta.html",
+		"/home/rodmast/Escritorio/GitHub/bartsch/templates/perfil.html",
+		"/home/rodmast/Escritorio/GitHub/bartsch/templates/contacto.html",
+		"/home/rodmast/Escritorio/GitHub/bartsch/templates/registrarse.html",
+		"/home/rodmast/Escritorio/GitHub/bartsch/templates/cervezas.html",
+		"/home/rodmast/Escritorio/GitHub/bartsch/templates/carro_productos.html",
+		"/home/rodmast/Escritorio/GitHub/bartsch/templates/base.html",
+		"/home/rodmast/Escritorio/GitHub/bartsch/templates/home.html",
+		"/home/rodmast/Escritorio/GitHub/bartsch/templates/quienes_somos.html",
+		"/home/rodmast/Escritorio/GitHub/bartsch/templates/carro_reserva.html",
+		"/home/rodmast/Escritorio/GitHub/bartsch/templates/entries2.html",
+		"/home/rodmast/Escritorio/GitHub/bartsch/templates/footer.html",
+		"/home/rodmast/Escritorio/GitHub/bartsch/templates/carro_cantidad.html",
+		"/home/rodmast/Escritorio/GitHub/bartsch/templates/caroo_productos.html",
+		"/home/rodmast/Escritorio/GitHub/bartsch/templates/form.html",
+		"/home/rodmast/Escritorio/GitHub/bartsch/templates/entries.html",
+		"/home/rodmast/Escritorio/GitHub/bartsch/templates/productos.html",
+		"/home/rodmast/Escritorio/GitHub/bartsch/base de datos.sql",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO226 - Desarrollo WEB 2.0/FLASK/bartsch/app.py",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO226 - Desarrollo WEB 2.0/FLASK/bartsch/templates/registrarse.html",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO226 - Desarrollo WEB 2.0/FLASK/bartsch/templates/home.html",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO226 - Desarrollo WEB 2.0/FLASK/bartsch/templates/entries.html",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO226 - Desarrollo WEB 2.0/FLASK/bartsch/templates/entries2.html",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO226 - Desarrollo WEB 2.0/FLASK/bartsch/templates/carro.html",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO226 - Desarrollo WEB 2.0/FLASK/bartsch/base de datos.sql",
+		"/home/rodmast/Escritorio/bartsch/templates/base.html",
+		"/home/rodmast/Escritorio/bartsch/templates/productos.html",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO226 - Desarrollo WEB 2.0/FLASK/bartsch/schema.sql",
+		"/home/rodmast/www/html/PRACTICOS/PRACTICO_05/index_producto.php",
+		"/home/rodmast/www/html/PRACTICOS/PRACTICO_05/funciones_cliente.js",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO226 - Desarrollo WEB 2.0/FLASK/flask_blog-master/base de datos.sql",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO226 - Desarrollo WEB 2.0/FLASK/flask_blog-master/creardb.py",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO226 - Desarrollo WEB 2.0/FLASK/flask_blog-master/templates/form.html",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO226 - Desarrollo WEB 2.0/FLASK/flask_blog-master/templates/base.html",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO226 - Desarrollo WEB 2.0/FLASK/flask_blog-master/templates/entries.html",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO226 - Desarrollo WEB 2.0/FLASK/flask_blog-master/templates/productos.html",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO226 - Desarrollo WEB 2.0/FLASK/flask_blog-master/app.py",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO226 - Desarrollo WEB 2.0/Clases/LAB01/laboratorio01.html",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO226 - Desarrollo WEB 2.0/FLASK/Practico Login/Login - DIAZ ROCHOW FLORES/login.py",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO226 - Desarrollo WEB 2.0/FLASK/flask_blog-master/templates/base2.html",
+		"/home/rodmast/Escritorio/Base de Datos/Guia_Triggers.sql",
+		"/home/rodmast/Escritorio/Base de Datos/Guia_Procedimientos.sql",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO226 - Desarrollo WEB 2.0/APP WEB/Ejemplos Flask/ejemplo1.py",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO226 - Desarrollo WEB 2.0/APP WEB/Ejemplos Flask/hola.py",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO226 - Desarrollo WEB 2.0/Practicos/PRACTICO API REST/flask_blog-master/templates/form.html",
+		"/home/rodmast/www/html/PRACTICOS/PRACTICO_05/webServices.php",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO226 - Desarrollo WEB 2.0/Practicos/PRACTICO API REST/flask_blog-master/templates/base.html",
+		"/home/rodmast/www/html/PRACTICOS/PRACTICO_05/index_cliente.php",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO226 - Desarrollo WEB 2.0/Practicos/PRACTICO API REST/flask_blog-master/templates/entries.html",
+		"/home/rodmast/Escritorio/Base de Datos/Guia_Funciones.txt",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO226 - Desarrollo WEB 2.0/FLASK/Practico Login/Login - DIAZ/claves.txt",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO226 - Desarrollo WEB 2.0/FLASK/Practico Login/Login - DIAZ/creardb.py",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO226 - Desarrollo WEB 2.0/FLASK/Practico Login/Login - DIAZ/templates/bienvenido.html",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO226 - Desarrollo WEB 2.0/FLASK/Practico Login/Login - DIAZ/templates/login.html",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO226 - Desarrollo WEB 2.0/FLASK/Practico Login/Login - DIAZ/templates/usuarios.html",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO226 - Desarrollo WEB 2.0/FLASK/Practico Login/Login - DIAZ/hola.py",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO226 - Desarrollo WEB 2.0/FLASK/Practico Login/tarea_login_Javier_perez/app.py",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO226 - Desarrollo WEB 2.0/FLASK/Practico Login/FlaskLogin_-_Boris_Sotomayor/app.py",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO226 - Desarrollo WEB 2.0/FLASK/Practico Login/FlaskLogin_-_Boris_Sotomayor/templates/base.html",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO226 - Desarrollo WEB 2.0/FLASK/Practico Login/FlaskLogin_-_Boris_Sotomayor/templates/log.html",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO226 - Desarrollo WEB 2.0/FLASK/Practico Login/FlaskLogin_-_Boris_Sotomayor/templates/welcome.html",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO226 - Desarrollo WEB 2.0/FLASK/Practico Login/FlaskLogin_-_Boris_Sotomayor/sql.py",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO226 - Desarrollo WEB 2.0/FLASK/Practico Login/tarea_login 1/app.py",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO267 - Inteligencia Artificial 2014/Programacion Logica/ejemplo1.clp",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO267 - Inteligencia Artificial 2014/Talleres/Taller 04 - Programacion Logica/Codigo/pc_2.clp",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO267 - Inteligencia Artificial 2014/Talleres/Taller 04 - Programacion Logica/Codigo/ejem_pc_2.dat",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO267 - Inteligencia Artificial 2014/Talleres/Taller 05 - Programacion Logica/Otros Compañeros/Asistente de reparación de computador/compu_hechos.dat",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO267 - Inteligencia Artificial 2014/Talleres/Taller 05 - Programacion Logica/Otros Compañeros/Asistente de reparación de computador/compu.clp",
+		"/home/rodmast/Escritorio/UACH SEMESTRE II - 2014/INFO267 - Inteligencia Artificial 2014/Talleres/Taller 05 - Programacion Logica/Jess71p2/examples/jess/hello.clp",
+		"/home/rodmast/Dropbox/INFO264 - Proyecto Bartsch/Proyecto Bartsch/01 - Fase Inception/Bartsch Carta Gantt.xml",
+		"/home/rodmast/Escritorio/INFO226 - Desarrollo WEB 2.0/Clases/LAB13/Readme.md",
+		"/home/rodmast/Escritorio/INFO226 - Desarrollo WEB 2.0/Clases/LAB13/schema.sql",
+		"/home/rodmast/Escritorio/INFO226 - Desarrollo WEB 2.0/Clases/LAB13/app.py",
+		"/home/rodmast/Escritorio/INFO226 - Desarrollo WEB 2.0/Clases/LAB13/templates/entries.html",
+		"/home/rodmast/Escritorio/INFO165 - Compiladores/Tarea/calculadora/calculadora.flex",
+		"/home/rodmast/Escritorio/INFO165 - Compiladores/Tarea/2014/TAREA_FINAL/Codigo Fuente/lml.flex",
+		"/home/rodmast/Escritorio/INFO165 - Compiladores/Tarea/calculadora/calculadora.cup",
+		"/home/rodmast/Escritorio/INFO165 - Compiladores/Tarea/2014/TAREA_FINAL/lml.cup",
+		"/home/rodmast/Escritorio/INFO267 - Inteligencia Artificial 2014/Talleres/Taller 04 - Aprendisaje no Supervizado/Pregunta1.r",
+		"/home/rodmast/www/typo3_src/INSTALL.md",
+		"/etc/apache2/apache2.conf",
+		"/home/rodmast/Escritorio/INFO267 - Inteligencia Artificial 2014/Talleres/Taller 04 - Aprendisaje no Supervizado/pregunta3.r",
+		"/home/rodmast/Escritorio/INFO267 - Inteligencia Artificial 2014/Talleres/Taller 04 - Aprendisaje no Supervizado/otros/V2_taller3_guzman_muster_ramirez/trabajo_twitter_kmeans.R",
+		"/home/rodmast/Escritorio/INFO165 - Compiladores/Tarea/2014/TAREA_FINAL/Tabla de Analisis Sintactico.txt",
+		"/home/rodmast/Escritorio/INFO165 - Compiladores/Tarea/2014/TAREA_FINAL/Tabla de Analisis/Action Table.txt",
+		"/home/rodmast/Escritorio/INFO267 - Inteligencia Artificial 2014/Controles/Control 03 - Aprendizaje No Supervizado/Prueba3  - 2014/Prueba3.r",
+		"/home/rodmast/Escritorio/INFO267 - Inteligencia Artificial 2014/Talleres/Taller 04 - Aprendisaje no Supervizado/otros/Taller3_Teran/kmeans.R",
+		"/home/rodmast/www/html/index.php",
+		"/home/rodmast/Escritorio/INFO267 - Inteligencia Artificial 2014/Talleres/Taller 04 - Aprendisaje no Supervizado/pregunta2.r",
+		"/home/rodmast/Escritorio/INFO165 - Compiladores/Tarea/2014/RODOLFO/Analizador_Sintactico.cup",
+		"/home/rodmast/Escritorio/INFO165 - Compiladores/Tarea/prueba/Ejemplo2/src/dibujo_sintactico.cup",
+		"/home/rodmast/Escritorio/INFO165 - Compiladores/Tarea/prueba/Ejemplo2/src/dibujo_lexico.lex",
+		"/home/rodmast/Escritorio/INFO165 - Compiladores/Tarea/Gramática LML corregida.txt",
+		"/home/rodmast/Escritorio/INFO165 - Compiladores/Tarea/2014/RODOLFO/Analizador_Lexicografico.flex",
+		"/home/rodmast/Escritorio/INFO165 - Compiladores/Tarea/2014/TAREA_FINAL/lml.flex",
+		"/home/rodmast/Escritorio/INFO165 - Compiladores/Tarea/2014/BENJAMIN/Tarea 3/Tarea/lml.cup",
+		"/home/rodmast/Escritorio/INFO165 - Compiladores/Tarea/2014/BENJAMIN/Tarea 3/Tarea/lml.flex",
+		"/home/rodmast/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/home/rodmast/Escritorio/INFO165 - Compiladores/Tarea/2014/BENJAMIN/lml.flex",
+		"/home/rodmast/Escritorio/INFO165 - Compiladores/Tarea/2014/BENJAMIN/lml.cup",
+		"/home/rodmast/Escritorio/INFO165 - Compiladores/Tarea/2014/BENJAMIN/Tarea 3/Tarea/lml_R.flex",
+		"/home/rodmast/Escritorio/INFO165 - Compiladores/Tarea/prueba/Ejemplo2/src/PanelDib.java",
+		"/home/rodmast/Escritorio/INFO165 - Compiladores/Tarea/prueba/Ejemplo2/src/TDS_Dibujo.java",
+		"/home/rodmast/Escritorio/INFO165 - Compiladores/Tarea/prueba/Ejemplo2/src/VentanaDib.java",
+		"/home/rodmast/Escritorio/INFO165 - Compiladores/Tarea/Tarea2014/lml.flex",
+		"/home/rodmast/Escritorio/INFO165 - Compiladores/Tarea/Tarea2014/lml.cup",
+		"/home/rodmast/Escritorio/INFO165 - Compiladores/Tarea/prueba/Ejemplo1/coversor.lex",
+		"/home/rodmast/Escritorio/INFO165 - Compiladores/Tarea/prueba/Ejemplo1/conversor.cup",
+		"/home/rodmast/Escritorio/INFO165 - Compiladores/Tarea/prueba/Ejemplo1/Main.java",
+		"/home/rodmast/Escritorio/INFO165 - Compiladores/Tarea/prueba/Ejemplo1/entrada.txt",
+		"/home/rodmast/Escritorio/INFO165 - Compiladores/Tarea/prueba/dibujo_lexico.lex",
+		"/home/rodmast/Escritorio/INFO165 - Compiladores/Tarea/prueba/VentanaDib.java",
+		"/home/rodmast/Escritorio/INFO165 - Compiladores/Tarea/prueba/TDS_Dibujo.java",
+		"/home/rodmast/Escritorio/INFO165 - Compiladores/Tarea/prueba/sym.java",
+		"/home/rodmast/Escritorio/INFO165 - Compiladores/Tarea/prueba/PanelDib.java"
+	],
+	"find":
+	{
+		"height": 24.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"redirect",
+			"form",
+			"connect_db2",
+			"cerveza",
+			"producto",
+			"login",
+			"myCarousel",
+			"username",
+			"reempezar",
+			"nodoNO",
+			"nodoSI",
+			"no-Nodo",
+			"si-Nodo",
+			"no-Nodo",
+			"si-Nodo",
+			"VAR",
+			"ENTERO",
+			"DIBUJAR",
+			"scan",
+			"zoom",
+			"id_producto",
+			"FastClick",
+			"fastclick",
+			"cargar_Formulario",
+			"dateformat",
+			"contenido",
+			"button",
+			"autocomplete",
+			"selectmenu",
+			"spinner",
+			".ui-widget",
+			"flato mode, inside",
+			"</correo>",
+			"<correo>",
+			"</apellido>",
+			"<apellido>",
+			"</nombre>",
+			"<nombre>",
+			"</rut>",
+			"<rut>",
+			"border",
+			"update"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"connect_db",
+			"producto",
+			"cervezas",
+			"nombre",
+			"reiniciar",
+			"nNO",
+			"nSI",
+			"nodoNO",
+			"nodoSI",
+			"nodoNO",
+			"nodoSI",
+			"si",
+			"numero",
+			"')",
+			"'",
+			"',",
+			"'",
+			"',",
+			"'",
+			"',",
+			"('",
+			"("
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 32.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "README.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 171.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

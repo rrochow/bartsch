@@ -1,7 +1,4 @@
 # -*- coding: utf-8 -*-
-#librería Mapas Google
-from flask.ext.googlemaps import Map
-from flask.ext.googlemaps import GoogleMaps
 #libreria validacion de mail solamente chrome
 #libreria time para trabajar con fechas
 import re,time
@@ -38,7 +35,7 @@ total_compra = 0
 app = Flask(__name__)
 app.config.from_object(__name__)
 mail = Mail(app)
-GoogleMaps(app)
+
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
 #conexion a la base de datos
@@ -112,15 +109,8 @@ def show_home():
     return render_template('home.html')
 
 @app.route('/bartsch')
-def show_bartsch():
-    mymap = Map(
-        identifier="view-side",
-        lat=-40.069423,
-        lng=-72.871640,
-        markers=[(-40.069423, -72.871640)]
-    )
-    
-    return render_template('quienes_somos.html',mymap = mymap)
+def show_bartsch(): 
+    return render_template('quienes_somos.html')
 
 @app.route('/cervezas')
 def show_cervezas():
@@ -137,7 +127,7 @@ def show_cervezas():
 @app.route('/carro')
 def show_productos():
     db = connect_db()
-    cur = db.execute('SELECT id,nombre, descripcion,precio_neto,img_url FROM producto ORDER BY id_cerveza ASC')
+    cur = db.execute('SELECT p.id,p.nombre, p.descripcion,p.precio_neto,p.img_url,b.stock FROM producto p, bodega b WHERE p.id=b.id_producto')
     producto = cur.fetchall()
     db.close()
 

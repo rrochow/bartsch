@@ -1,34 +1,64 @@
 {% extends "base.html" %}
 
+
+
 {% block content %}
+<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script src="{{url_for('static', filename='jquery.gomap-1.3.2.min.js' )}}"></script>
+<script> 
+	$(document).ready(function(){
+		$('#map').goMap({
+			latitude: -40.069423, 
+			longitude: -72.871640,  
+			zoom: 14, 									
+			markers: [{  
+				latitude: -40.069423, 
+				longitude: -72.871640, 
+				title: 'Cerveza Bartsch' 
+			}]
+		});//end goMap		
+		$.goMap.createMarker({  
+				address: 'Bartsch, Chile' 
+		});
+	});//en ready
+</script>
+
+<style>
+	#map {
+		height:250px;
+		width: 1118px;
+	}
+</style>
+
+
 <div class="container">
 <h2>Quienes Somos?</h2>
 	<div class="container">
-		<h1>
-		    <IMG SRC="{{url_for('static', filename= 'imagenes/logo.svg' )}}" width="70" height="70">
-		   	</IMG> 
-		    Cerveza Bartsch
-		</h1>
-
-	  	<img src="{{url_for('static', filename='imagenes/portada01.jpg' )}}" width="1100" height="200">
+		<h3>
+		    Cerveceria Bartsch
+		</h3>
 	    <p>
 	    	Somos una empresa joven que se especializa en la elaboración de la cerveza artesanal, que se preocupa por cumplir las expectativas del mercado y de agradar al paladar más exigente.
 
 	    	Comprometidos con la excelencia en la producción de cerveza artesanal, ya que contamos con el talento humano para su producción, buscando siempre la satisfacción de nuestros clientes a través de políticas de mejoramiento continuo, llevando de la mano nuestros procesos con el cuidado del medio ambiente y conciencia de la comunidad. 
 		</p>
+		<img src="{{url_for('static', filename='imagenes/imagen04.jpg' )}}" width="370" height="250">
+		<img src="{{url_for('static', filename='imagenes/imagen05.jpg' )}}" width="370" height="250">
+		<img src="{{url_for('static', filename='imagenes/imagen06.jpg' )}}" width="370" height="250">
 		<h3>Objetivos</h3>
 		<p>
 			Crear productos innovadores y de alta calidad que satisfagan a nuestros clientes, cumpliendo con los requisitos de calidad, frescura y sabor.
 			Llegar a ser una empresa altamente competitiva en el mercado de la cerveza artesanal.
 		</p>
+
+		<h3>Estamos ubicados</h3>
+		<p>Cervezeria Bartsch, se encuentra ubicada en la ciudad de Paillaco, ubicado en las cercanias de Valdivia.</p>
+		<img src="{{url_for('static', filename='imagenes/paillaco01.jpg' )}}" width="370" height="250">
+		<img src="{{url_for('static', filename='imagenes/paillaco02.jpg' )}}" width="370" height="250">
+		<img src="{{url_for('static', filename='imagenes/paillaco03.jpg' )}}" width="370" height="250">
+		<p></p>
+			<div id = "map"></div>
 	</div>
-	<body>
-        <h1>Estamos ubicados</h1>
-        <h2> </h2>
-        <p align="center">
-        	{{ mymap.html }}
-        	{{ mymap.js }}
-        </p>
-    </body>
+
 </div>
 {% endblock content %}
