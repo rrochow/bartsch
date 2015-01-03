@@ -133,6 +133,33 @@ def show_productos():
 
     return render_template('carro_productos.html', productos=producto,cantidad = total_carro)
 
+@app.route('/carro_sumar/<int:stock>/<int:cantidad>/<int:id_producto>')
+def sumar_producto(stock,cantidad,id_producto):
+	if cantidad<stock:
+		global total_carro
+		for producto in carro:
+			if producto[0]==id_producto:
+				producto[1]=producto[1]+1
+				total_carro=total_carro+1
+
+		return redirect(url_for('show_carro',error='(sumar stock)'))
+	else:
+		return redirect(url_for('show_carro',error='(no hay mas stock)'))
+
+
+@app.route('/carro_restar/<int:stock>/<int:cantidad>/<int:id_producto>')
+def restar_producto(stock,cantidad,id_producto):
+	if cantidad>1:
+		global total_carro
+		for producto in carro:
+			if producto[0]==id_producto:
+				producto[1]=producto[1]-1
+				total_carro=total_carro-1
+		return redirect(url_for('show_carro',error='(restar stock)'))
+	else:
+		return redirect(url_for('show_carro',error='(la cantidad no puede ser menor que 1)'))
+
+
 @app.route('/carro/<int:id_producto>/<int:cantidad>')
 def agregar_al_carro(id_producto,cantidad):
     global carro
@@ -170,52 +197,55 @@ def agregar_al_carro(id_producto,cantidad):
         carro.append(producto)
         return redirect(url_for('show_productos'))
 
-@app.route('/reserva')
-def crear_reserva():
-    #insertamos una nueva reserva
-    fecha = time.strftime("%d/%m/%Y")
-    db = connect_db()
-    db.execute(
-        'INSERT INTO reserva (fecha,tipo_documento,id_cliente) VALUES (?, ?, ?)',
-        [fecha, 'boleta',session['id']]
-    )
-    db.commit()
-    db.close()
 
-    #obtenemos el id de la reserva nueva
-    db = connect_db()
-    cur = db.execute(
-        'SELECT MAX(id) AS id FROM reserva WHERE id_cliente=?',[session['id']]
-    )
-    query = cur.fetchall()
-    db.close()
-
-    for reserva in query:
-        id_reserva = reserva['id']
-
-    #insertamos los productos asociados
-    db = connect_db()    
-    for i in range(len(carro)):
-        cur = db.execute(
-            'INSERT INTO producto_reserva (id_reserva,id_producto,cantidad) VALUES (?,?,?)',
-            [ id_reserva, carro[i][0], carro[i][1] ]
-        )
-        db.commit()    
-    db.close()
-    #reiniciamos el carro
-    init_variables()
-    return render_template("carro_reserva.html")
-
-@app.route('/carro_compras')
-def show_carro():
+@app.route('/carro_compras/<error>')
+def show_carro(error):
     global total_compra
     total_compra = 0
     if total_carro>0:
         for i in range(len(carro)):
             total_compra = carro[i][1] * carro[i][5] + total_compra
-        return render_template('carro.html',carro=carro,total=total_compra)
+        return render_template('carro.html',carro=carro,total=total_compra,mensaje=error)
     else:
-        return render_template('carro.html')
+        return render_template('carro.html',mensaje='(Carro sin productos)')
+
+@app.route('/reserva')
+def crear_reserva():
+	#vemos si stock es mayor que cantidad
+	for i in range(len(carro)):
+		if carro[i][4]<carro[i][1]:
+			return redirect(url_for('show_carro',error='(no hay stock suficiente)'))
+			
+	
+	#insertamos nueva reserva
+	fecha = time.strftime("%d/%m/%Y")
+	db = connect_db()
+	db.execute('INSERT INTO reserva (fecha,tipo_documento,id_cliente) VALUES (?, ?, ?)',[fecha, 'boleta',session['id']])
+	db.commit()
+	db.close()
+	#obtenemos el id de la reserva nueva
+	db = connect_db()
+	cur = db.execute('SELECT MAX(id) AS id FROM reserva WHERE id_cliente=?',[session['id']])
+	query = cur.fetchall()
+	db.close()
+	for reserva in query:
+		id_reserva = reserva['id']
+		#insertamos los productos asociados
+	
+	db = connect_db()    
+	
+	for i in range(len(carro)):
+		cur = db.execute('INSERT INTO producto_reserva (id_reserva,id_producto,cantidad) VALUES (?,?,?)',[ id_reserva, carro[i][0], carro[i][1] ])
+		db.commit()
+		nuevo_stock = carro[i][4]-carro[i][1]
+		cur = db.execute('UPDATE bodega SET stock=? WHERE id_producto=?',[ nuevo_stock,carro[i][0] ])
+		db.commit()
+	
+	db.close()
+	#reiniciamos el carro
+	init_variables()
+	
+	return render_template("carro_reserva.html")
 
 @app.route('/carro_compras/<int:id_producto>/<int:cantidad>')
 def eliminar_del_carro(id_producto,cantidad):    
@@ -226,7 +256,7 @@ def eliminar_del_carro(id_producto,cantidad):
     for i in range(len(carro)):
         if id_producto == carro[i][0]:
             del carro[i]
-            return redirect(url_for('show_carro'))
+            return redirect(url_for('show_carro',error='(producto eliminado del carro)'))
 
 
 #####################

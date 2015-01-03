@@ -5,7 +5,7 @@
 <div class="container">
 			<h2>Tu Carro de Compras</h2>
 	<div class="panel panel-default">
-		<div class="panel-heading"><h4>Detalle de la Reserva</h4></div>
+		<div class="panel-heading"><h4>Detalle de la Reserva <em class="text-success">{{ mensaje }}</em></h4></div>
 	  	<TABLE class = 'table table-bordered table-striped table-hover'>
 	  		<TR>
 	  			<th></th>
@@ -13,28 +13,37 @@
 				<TH>descripcion</TH>
 				<TH>stock</TH>
 				<TH>cantidad</TH>
-				<TH>precio unitario</TH>
-				<TH>precio total</TH>
+				<TH nowrap>precio unitario</TH>
+				<TH nowrap>precio total</TH>
 				<TH>eliminar</TH>
 			</TR>
 				
 			{% for producto in carro %}
-			<form action="{{ url_for('show_carro') }}" method="post">
+			<form action="{{ url_for('show_carro',error='') }}" method="post">
 			<TR>
 				<TD>
 					<IMG SRC="{{url_for('static', filename= producto[6] )}}" width="50" height="50"></IMG>
 				</TD>
-				<TD>{{ producto[2] }}</TD>
-				<TD>{{ producto[3] }}</TD>
+				<TD nowrap>{{ producto[2] }}</TD>
+				<TD nowrap>{{ producto[3] }}</TD>
 				
 				<TD>{{ producto[4] }}</TD>
 				<TD>
-					<div>
-						<input name = "cantidad" type="number" class="form-control" placeholder="Cantidad" value = "{{ producto[1] }}" readonly>
-					</div>
+				    <div class="input-group">				    	
+						<input name="cantidad "type="text" class="form-control" value = "{{ producto[1] }}" readonly>
+						<a 
+						href="{{ url_for('sumar_producto',stock=producto[4],cantidad=producto[1],id_producto=producto[0]) }}"class="input-group-addon btn btn-default" role="button"
+						>+</a>
+						
+						<a 
+						href="{{ url_for('restar_producto',stock=producto[4],cantidad=producto[1],id_producto=producto[0]) }}"
+						class="input-group-addon btn btn-default" role="button"
+						>-</a>
+						
+				    </div>
 				</TD>
-				<TD class="text-danger"><strong>$ {{ producto[5] }}</strong></TD>
-				<TD class="text-danger"><strong>$ {{ producto[5]*producto[1] }}</strong></TD>
+				<TD class="text-danger" nowrap><strong>$ {{ producto[5] }}</strong></TD>
+				<TD class="text-danger" nowrap><strong>$ {{ producto[5]*producto[1] }}</strong></TD>
 
 				<TD>
 					<div class="">
@@ -54,7 +63,7 @@
 				<TD></TD>
 				<TD></TD>
 				<TD></TD>
-				<TD><label>Total de la Compra</label></TD>
+				<TD nowrap><label>Total de la Compra</label></TD>
 				<TD class="text-danger"><strong>$ {{ total }}</strong></TD>
 				
 			</TR>	

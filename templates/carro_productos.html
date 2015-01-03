@@ -6,7 +6,7 @@
   <h2>Productos Bartsch</h2>
   <p>
     <span class="glyphicon glyphicon-shopping-cart"></span>
-    <a href="{{ url_for('show_carro') }}">Carro de Compras <span class="badge">{{ cantidad }}</span></a>
+    <a href="{{ url_for('show_carro',error=' ') }}">Carro de Compras <span class="badge">{{ cantidad }}</span></a>
   </p>
   <!--/ Cuadro con Producto-->
   <div class="row">
@@ -18,7 +18,7 @@
             <h4>{{ producto.nombre }}</h4>
             <p>{{ producto.descripcion }}</p>
             <p class="text-danger"><strong>${{ producto.precio_neto }}</strong></p>
-            
+                      
             {% if producto.stock > 0 %}
               <a href="{{ url_for('agregar_al_carro',id_producto=producto.id,cantidad=1 ) }}" class="btn btn-primary" role="button">
                   + Agregar al carro
@@ -27,7 +27,8 @@
               <a href="" class="btn btn-danger" role="button" disabled="disabled">
                   + Sin Stock
               </a>
-            {% endif %}            
+            {% endif %}
+                    
           </div>
         </div>
 
