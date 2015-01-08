@@ -3,6 +3,8 @@ flask_blog
 
 Rodolfo Díaz, rodmast@gmail.com
 
+Genoveva Flores, gfloresmanqui@gmail.com
+
 Ricardo Rochow, rrochow@live.com
 
 <<<<<<< HEAD
